@@ -13,6 +13,13 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "./ui/toast";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 const Sidebar = () => {
 	const [showSidebar, setShowSidebar] = useState(true);
@@ -76,38 +83,47 @@ const Sidebar = () => {
 							<ChevronRight />
 						</Button>
 					) : (
-						<button
-							onClick={() => {
-								toast({
-									title: "Uh oh! Something went wrong.",
-									description: "We've encountered some issue with the server",
-									variant: "destructive",
-									action: (
-										<ToastAction altText="Try again">Try again</ToastAction>
-									),
-								});
-							}}
-							className="flex mx-1 space-x-2 hover:bg-gray-200 items-center rounded-lg px-2 py-1 w-full"
-						>
-							<div className="rounded-lg bg-black h-[30px] w-[30px] overflow-clip">
-								<img
-									src="https://github.com/shadcn.png"
-									alt="AV"
-									className="h-full w-full object-cover"
-								/>
-							</div>
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<div
+									// onClick={() => {
+									// 	toast({
+									// 		title: "Uh oh! Something went wrong.",
+									// 		description: "We've encountered some issue with the server",
+									// 		variant: "destructive",
+									// 		action: (
+									// 			<ToastAction altText="Try again">Try again</ToastAction>
+									// 		),
+									// 	});
+									// }}
+									className="flex mx-1 space-x-2 hover:bg-gray-200 items-center rounded-lg px-2 py-1 w-full"
+								>
+									<div className="rounded-lg bg-black h-[30px] w-[30px] overflow-clip">
+										<img
+											src="https://github.com/shadcn.png"
+											alt="AV"
+											className="h-full w-full object-cover"
+										/>
+									</div>
 
-							<div className="flex-1 flex-grow">
-								<h1 className="text-start text-sm font-medium">Username</h1>
-								<h3 className="text-start text-[12px] text-gray-700">
-									user@mail.com
-								</h3>
-							</div>
+									<div className="flex-1 flex-grow">
+										<h1 className="text-start text-sm font-medium">Username</h1>
+										<h3 className="text-start text-[12px] text-gray-700">
+											user@mail.com
+										</h3>
+									</div>
 
-							<div>
-								<ChevronsUpDown size={17} />
-							</div>
-						</button>
+									<div>
+										<ChevronsUpDown size={17} />
+									</div>
+								</div>
+							</DropdownMenuTrigger>
+
+							<DropdownMenuContent className="w-56">
+								<DropdownMenuLabel>My Account</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+							</DropdownMenuContent>
+						</DropdownMenu>
 					)}
 				</div>
 			</div>
