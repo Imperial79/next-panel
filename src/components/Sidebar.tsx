@@ -11,8 +11,6 @@ import {
 	FileUser,
 	LayoutDashboard,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { ToastAction } from "./ui/toast";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -23,7 +21,6 @@ import {
 
 const Sidebar = () => {
 	const [showSidebar, setShowSidebar] = useState(true);
-	const { toast } = useToast();
 	const isAuthPage = usePathname().includes("auth");
 	return (
 		isAuthPage || (
@@ -41,7 +38,6 @@ const Sidebar = () => {
 						</div>
 
 						<div>
-							{/* <ChevronsUpDown size={17} /> */}
 							<Button
 								onClick={() => setShowSidebar(!showSidebar)}
 								variant="outline"
@@ -59,7 +55,7 @@ const Sidebar = () => {
 
 				<div className="flex flex-grow flex-col gap-1 border-separate">
 					<SideButton
-						path="/dashboard"
+						path="/"
 						icon={<LayoutDashboard size={15} />}
 						label="Home"
 						showSidebar={showSidebar}
