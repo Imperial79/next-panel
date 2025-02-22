@@ -1,4 +1,7 @@
+"use client";
+
 import Searchbar from "@/components/Searchbar";
+import Tabbar from "@/components/Tabbar";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -6,9 +9,12 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import React from "react";
+import React, { useState } from "react";
+
+const tabList: string[] = ["All", "Active", "Blocked"];
 
 const Page = () => {
+	const [selectedTab, setSelectedTab] = useState(tabList[0]);
 	return (
 		<div className="content">
 			<Breadcrumb>
@@ -18,11 +24,11 @@ const Page = () => {
 					</BreadcrumbItem>
 					<BreadcrumbSeparator />
 					<BreadcrumbItem>
-						<BreadcrumbLink href="/components">Components</BreadcrumbLink>
+						<BreadcrumbLink>Manage Customers</BreadcrumbLink>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<div className="flex flex-row items-center">
+			<div className="flex flex-row items-center mb-10">
 				<div className="flex-grow">
 					<h1 className="text-2xl font-semibold mt-5">Manage Customers</h1>
 					<p className="text-sm font-medium text-gray-400 mt-2">
@@ -32,6 +38,12 @@ const Page = () => {
 
 				<Searchbar />
 			</div>
+
+			<Tabbar
+				labelList={["All", "Active", "Blocked"]}
+				value={selectedTab}
+				setValue={setSelectedTab}
+			/>
 		</div>
 	);
 };

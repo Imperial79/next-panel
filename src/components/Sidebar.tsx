@@ -147,7 +147,7 @@ const SideButton: React.FC<SideButtonProps> = ({
 		<Link href={path}>
 			<div
 				className={`relative rounded-md hover:bg-gray-200 hover:text-gray-800 text-gray-600 w-full p-2 flex gap-2 items-center group ${
-					isActive ? "bg-gray-200 text-gray-800" : ""
+					isActive ? "bg-gray-200 text-black" : ""
 				} ${showSidebar ? "justify-start " : "justify-center"}`}
 			>
 				{icon}
